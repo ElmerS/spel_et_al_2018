@@ -3,7 +3,7 @@
 ## Summary
 In this repository you will find all the command, scripts and reference files that
 were used for the analysis of the two way phenotype screen in the Spel *et_al* (2018)
-paper. The output of the analysis is a csv file with 
+paper. The output of the analysis is a csv file that lists which genes are selected as hit.
 
 ## Requirements
 * A computer running some flavor of Linux with sufficient RAM, storage and 
@@ -11,9 +11,9 @@ computational power to analyze NGS data. The scripts are not tested (and likely
 incompatible to due a different implementation of awk) on Mac OS X.
 * Bowtie1
 * R
-** Bioconductor, DESeq2 and IRanges need to be installed (Bioconductor 3.5, IRanges 2.10.3 and DESeq2 1.16.1 were used)
+  * Bioconductor, DESeq2 and IRanges need to be installed. (Bioconductor 3.5, IRanges 2.10.3 and DESeq2 1.16.1 were used)
 * Python3
-** Pandas and Numpy are required. Pandas 0.20.3 and Numpy 1.13.1 were used
+  * Pandas and Numpy are required. (Pandas 0.20.3 and Numpy 1.13.1 were used)
 
 ## Walkthrough
 1. Extract guides from sequence reads
