@@ -8,18 +8,18 @@
 
 # Load packages
 source("https://bioconductor.org/biocLite.R")
-#biocLite("DESeq2") # Install DESeq2 if it hasn't been installed before
+#biocLite("DESeq2") # Install DESeq2 if it wasn't been installed before
 library("DESeq2")
+#biocLite("IRanges") # Install IRanges if it wasn't been installed before
 library("IRanges")
-
-setwd("/media/data/analyzed_data/data_for_papers/Spel_et_al/")
 
 # Read the data
 guides_table <- read.table('unique_guides_underscore.txt', col.names='sgRNA')
-pos_rep_1_table <- read.table('3616_4.counts', header=F, col.names = c('P1', 'sgRNA'))
-pos_rep_2_table <- read.table('4470_2.counts', header=F, col.names = c('P2', 'sgRNA'))
-neg_rep_1_table <- read.table('3616_1.counts', header=F, col.names = c('N1', 'sgRNA'))
-neg_rep_2_table <- read.table('4470_1.counts', header=F, col.names = c('N2', 'sgRNA'))
+
+pos_rep_1_table <- read.table("sample_w.counts", header=F, col.names = c('P1', 'sgRNA')) # Counts of sorted population with high NFkB and high MHC, replicate 1
+pos_rep_2_table <- read.table("sample_x.counts", header=F, col.names = c('P2', 'sgRNA')) # Counts of sorted population with high NFkB and high MHC, replicate 2
+neg_rep_1_table <- read.table("sample_y.counts", header=F, col.names = c('N1', 'sgRNA')) # Counts of sorted population with low NFkB and low MHC, replicate 1
+neg_rep_2_table <- read.table("sample_z.counts", header=F, col.names = c('N2', 'sgRNA')) # Counts of sorted population with low NFkB and low MHC, replicate 2
 
 # Merge the counts from all four populations into a single dataframe
 countdata_df <- Reduce(function(...) merge(..., all=TRUE, by='sgRNA'), list(guides_table, pos_rep_1_table, pos_rep_2_table, neg_rep_1_table, neg_rep_2_table))
@@ -50,4 +50,6 @@ resOrdered <- res[order(res$padj),]
 resOrderedDF <- as.data.frame(resOrdered)
 
 # Export results to results.csv
-write.csv(resOrderedDF, file = "results.csv")
+write.csv(resOrderedDF, file = "intermediate_results.csv")
+
+print("Completed! Continue with postprocessing")

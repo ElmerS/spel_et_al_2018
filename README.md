@@ -3,7 +3,7 @@
 ## Summary
 In this repository you will find all the command, scripts and reference files that
 were used for the analysis of the two way phenotype screen in the Spel *et_al* (2018)
-paper.
+paper. The output of the analysis is a csv file with 
 
 ## Requirements
 * A computer running some flavor of Linux with sufficient RAM, storage and 
@@ -11,7 +11,9 @@ computational power to analyze NGS data. The scripts are not tested (and likely
 incompatible to due a different implementation of awk) on Mac OS X.
 * Bowtie1
 * R
-* IPython
+** Bioconductor, DESeq2 and IRanges need to be installed (Bioconductor 3.5, IRanges 2.10.3 and DESeq2 1.16.1 were used)
+* Python3
+** Pandas and Numpy are required. Pandas 0.20.3 and Numpy 1.13.1 were used
 
 ## Walkthrough
 1. Extract guides from sequence reads
@@ -62,4 +64,23 @@ cat aligned_reads_sample_x.sam aligned_recovered_reads_sample_x.sam | awk '{prin
 ```
 
 ## 4. Running DESeq2
+
+First, either open the DESeq2_analysis.R script in your favorite text editor or directly in R or Rstudio. Next, alter 
+the lines 19 till 22 to match the names of the 4 count files you created in the previous step. Now run the script inter-
+actively using R or Rstudio or directly using Rscript.
+
+```r
+Rscript DESeq2_analysis.R
+```
+
+## 5. Postprocessing
+
+The postprocessing basically consists of two parts. The first part deals with the NonTargetingControlGuides and assigns
+them random but equally divided over 167 hypothetical NonTargetingControlGenes. The second part of the script is the hit
+selection. Genes are selected as hit when at least 3 guides have an FDR corrected p-value < 0.05 and their 
+
+```python
+Python3 post_processing.py
+```
+
 
