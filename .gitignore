@@ -1,2 +1,4 @@
 # Ignore docx files
 *.docx
+*.counts
+*.idea
