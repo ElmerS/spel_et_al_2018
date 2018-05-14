@@ -3,7 +3,9 @@
 ## Summary
 In this repository you will find all the command, scripts and reference files that
 were used for the analysis of the two way phenotype screen in the Spel *et_al* (2018)
-paper. The output of the analysis is a csv file that lists which genes are selected as hit.
+paper. The output of the analysis is a csv file that lists which genes are selected as hit 
+and the input for the supplemental xlsx file in the paper. Intermediate (count) files
+will by uploaded to this repository upon publication.
 
 ## Requirements
 * A computer running some flavor of Linux with sufficient RAM, storage and 
