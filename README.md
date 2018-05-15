@@ -35,7 +35,7 @@ Adjust the two references 'reads_sample_x' to your actual filename.
 This command does the following:
 - decompresses the gz file
 - extract every 4th line containing of the sequence read
-- extracts any sequence of 19 - 21 bases flanked that is flanked by the ACCG and GTT sequences
+- extracts any sequence of 19 - 21 bases that is flanked by the ACCG and GTT sequences
 - adds a ">" and new line to comply to the fasta file format
 
 ## 2. Align extracted guides using Bowtie
